@@ -14,17 +14,19 @@ $.fn.editableTableWidget = function (options) {
 			active,
 			showEditor = function (select) {
 				active = element.find('td:focus');
-				if (active.length) {
-					editor.val(active.text())
-						.removeClass('error')
-						.show()
-						.offset(active.offset())
-						.css(active.css(activeOptions.cloneProperties))
-						.width(active.width())
-						.height(active.height())
-						.focus();
-					if (select) {
-						editor.select();
+                if(!$(active).hasClass("readonly")) {
+					if (active.length) {
+						editor.val(active.text())
+							.removeClass('error')
+							.show()
+							.offset(active.offset())
+							.css(active.css(activeOptions.cloneProperties))
+							.width(active.width())
+							.height(active.height())
+							.focus();
+						if (select) {
+							editor.select();
+						}
 					}
 				}
 			},
